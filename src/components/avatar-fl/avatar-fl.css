@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+h1 {
+  color:red;
+}
+
+.felipe {
+  border: 1px solid black;
+}
+div {
+  background-color: aqua;
+}

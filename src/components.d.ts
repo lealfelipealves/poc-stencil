@@ -6,6 +6,9 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
+    interface AvatarFl {
+        "nome": string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -22,6 +25,12 @@ export namespace Components {
     }
 }
 declare global {
+    interface HTMLAvatarFlElement extends Components.AvatarFl, HTMLStencilElement {
+    }
+    var HTMLAvatarFlElement: {
+        prototype: HTMLAvatarFlElement;
+        new (): HTMLAvatarFlElement;
+    };
     interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {
     }
     var HTMLMyComponentElement: {
@@ -29,10 +38,14 @@ declare global {
         new (): HTMLMyComponentElement;
     };
     interface HTMLElementTagNameMap {
+        "avatar-fl": HTMLAvatarFlElement;
         "my-component": HTMLMyComponentElement;
     }
 }
 declare namespace LocalJSX {
+    interface AvatarFl {
+        "nome"?: string;
+    }
     interface MyComponent {
         /**
           * The first name
@@ -48,6 +61,7 @@ declare namespace LocalJSX {
         "middle"?: string;
     }
     interface IntrinsicElements {
+        "avatar-fl": AvatarFl;
         "my-component": MyComponent;
     }
 }
@@ -55,6 +69,7 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
+            "avatar-fl": LocalJSX.AvatarFl & JSXBase.HTMLAttributes<HTMLAvatarFlElement>;
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
         }
     }
